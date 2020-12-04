@@ -1,0 +1,40 @@
+#cont1{
+  background-color:#ffffff;
+  padding:30px 20px;
+  border-radius:10px 10px;
+  margin-top:10px;
+}
+
+#logoHeader{
+  text-align: center;
+}
+
+#textHeader{
+  color:#757575;
+  text-align: center;
+}
+
+#inputBoxDiv{
+  margin-top: 5px;
+  padding: 20px;
+  /*border: 1px solid black;*/
+  text-align: center;
+}
+
+#inputBox{
+  width: auto;
+  height: auto;
+  text-align: center;
+}
+
+#addTodoButton{
+  margin-top: 10px;
+  text-align: center;
+}
+
+.scrollBar {
+  flex: 1;
+  background: #fff;
+  overflow-y: scroll;
+  max-height: 200px;
+}
