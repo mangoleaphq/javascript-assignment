@@ -13,9 +13,11 @@ class App extends React.Component{
       selectedIndexToEdit: 0,
     }
   }
+
   componentDidMount(){}
   componentWillUnmount(){}
 
+  //To check duplication of todo element
   duplicationCheck = async (todoItemName) => {
     for(let i = 0; i < this.state.todoList.length; i++){
       if (todoItemName === this.state.todoList[i].todoItemName){
@@ -25,6 +27,7 @@ class App extends React.Component{
     return false
   }
 
+  //Add todo item to the list
 	addTodoList = async () => {
     if(await this.duplicationCheck(this.state.currentlyAddingTodoItemName) === true){
       alert("Already present in the todo list")
@@ -42,14 +45,17 @@ class App extends React.Component{
 		});
   }
   
+  // To handle the change of text inside input box
 	handleInputBoxChange = (change) => {
 		this.setState({currentlyAddingTodoItemName:change.target.value});
   }
 
+  // To handle the change of text inside edit box
   handleEditBoxChange = (change) => {
 		this.setState({editTodoItemName:change.target.value});
   }
 
+  // Save changes of todo item after editing it
   saveChanges = async() => {
     if(this.state.editTodoItemName === '' || this.state.editTodoItem === null || this.state.editTodoItemName === this.state.todoList[this.state.selectedIndexToEdit].todoItemName){
       alert("Please enter/change something")
@@ -72,6 +78,7 @@ class App extends React.Component{
     this.setState({editTodoItem:false,editTodoItemName:null})
   }
   
+  // Delete todo item from the list
 	deleteFromTodoList = async (index) => {
 		let todoListCopy = this.state.todoList.slice();
 		todoListCopy.splice(index,1);
@@ -81,6 +88,7 @@ class App extends React.Component{
     console.log(this.state)
   }
 
+  // Change todo item state to completed or pending
   changeTodoState = (index,state) => {
     let todoListCopy = this.state.todoList.slice();
     todoListCopy[index].isCompleted = state;
@@ -116,7 +124,6 @@ class App extends React.Component{
       }
     });
     todoList=todoList.reverse();
-    //console.log(typeof(todoList))
     
     let completedList = this.state.todoList.map((value,index) => {
       if(value.isCompleted === true ){
