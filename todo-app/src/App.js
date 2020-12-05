@@ -14,8 +14,16 @@ class App extends React.Component{
     }
   }
   
-  componentDidMount(){}
-  componentWillUnmount(){}
+  componentDidMount(){
+    this.data =JSON.parse( sessionStorage.getItem('todoListStateData') );
+    console.log(this.data)
+    if(sessionStorage.getItem('todoListStateData'))
+      this.setState({todoList:this.data});
+  }
+  
+  componentDidUpdate(){
+    sessionStorage.setItem('todoListStateData',JSON.stringify(this.state.todoList))
+  }
 
   //To check duplication of todo element
   duplicationCheck = async (todoItemName) => {
