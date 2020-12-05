@@ -33,7 +33,7 @@
 }
 
 .scrollBar {
-  flex: 1;
+  /*flex: 1;*/
   background: #fff;
   overflow-y: scroll;
   max-height: 200px;

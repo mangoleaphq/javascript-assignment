@@ -36,7 +36,7 @@ class App extends React.Component{
   }
 
   //Add todo item to the list
-	addTodoList = async () => {
+  addTodoList = async () => {
     if(await this.duplicationCheck(this.state.currentlyAddingTodoItemName) === true){
       alert("Already present in the todo list")
       return
