@@ -13,7 +13,7 @@ class App extends React.Component{
       selectedIndexToEdit: 0,
     }
   }
-
+  
   componentDidMount(){}
   componentWillUnmount(){}
 
@@ -109,9 +109,7 @@ class App extends React.Component{
             </div>
             <div align='left'>
               <button style = {{color:'black'}} onClick={() => {
-                this.setState({selectedIndexToEdit:index})
-                this.setState({editTodoItem:true})
-                this.setState({editTodoItemName:value.todoItemName})
+                this.setState({selectedIndexToEdit:index,editTodoItem:true,editTodoItemName:value.todoItemName})
                 console.log(this.state)
               }} class="btn"><i class="fa fa-edit"></i></button>
               <button style = {{color:'red'}} onClick={() => {this.deleteFromTodoList(index)}}class="btn"><i class="fa fa-trash"></i></button>
