@@ -3,6 +3,7 @@ const router = require('express').Router(),
 
 //question routes
 router.post('/questions/', devForumService.addOrUpdateQuestion);
+router.get('/questions/:userid', devForumService.getAllQuestionsByUserId);
 
 //User routes
 router.post('/users/', devForumService.addOrUpdateUser);

@@ -7,8 +7,6 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
   }
 
-const dbconn = require('./dbconfig');
-
 //setup the server port
 const port = process.env.PORT || 4000;
 

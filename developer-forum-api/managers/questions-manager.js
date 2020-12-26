@@ -3,10 +3,6 @@ const questionDataAccessor = require('../data-access/questions-data-accessor'),
     templates = require('../common/templates'),
     uuid = require('uuid');
 
-
-
-
-
 async function createOrUpdateQuestion(data) {
     try {
         let response;
