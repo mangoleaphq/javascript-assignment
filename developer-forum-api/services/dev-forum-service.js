@@ -1,6 +1,7 @@
 let questionManager = require('../managers/questions-manager'),
     userManager = require('../managers/users-manager'),
     answerManager = require('../managers/answers-manager'),
+    commentManager = require('../managers/comments-manager')
     _ = require('lodash');
 
 async function addOrUpdateUser(req,res) {
@@ -78,8 +79,6 @@ async function addOrUpdateAnswer(req, res) {
         let questionInfo = await questionManager.getQuestionDataByQuestionId(req.body.question_id);
         let questionData = _.get(questionInfo, 'description');
 
-
-
         let answerDataResponse;
         if(!_.isUndefined(questionData))
             answerDataResponse = await answerManager.createOrUpdateAnswer(req.body);
@@ -105,10 +104,76 @@ async function addOrUpdateAnswer(req, res) {
     }
 }
 
+async function getAllAnswersByQuestionId(req, res) {
+    try {
+        let response = await answerManager.getAnswerListByQuestionId(req.params.questionid);
+        let answerList = [];
+        for (let data of response) {
+            answerList.push(data.description.answer_id)
+        }
+        res.json({ "answerList" : answerList });
+    } catch (err) {
+        console.log(err);
+        res.send('Error Fetching Data');
+    }
+}
+
+async function addorUpdateComments(req,res) {
+    try {
+        let commentResponse = await commentManager.createorUpdateComments(req.body);
+        if(req.body.question_id) { //add comment to a question
+            let questionInfo = await questionManager.getQuestionDataByQuestionId(req.body.question_id);
+            let questionData = _.get(questionInfo, 'description');
+            //update answer id in question data and handle duplicate entries
+            if(!questionData.comment_ids.includes(_.get(commentResponse, 'comment_id')))
+                questionData.comment_ids.push(_.get(commentResponse, 'comment_id'));
+            await questionManager.createOrUpdateQuestion(questionData);
+        }
+        if(req.body.answer_id) { //add comment to an answer
+            let answerInfo = await answerManager.getAnswerDataByAnswerId(req.body.answer_id);
+            let answerData = _.get(answerInfo, 'description');
+            //update answer id in question data and handle duplicate entries
+            if(!answerData.comment_ids.includes(_.get(commentResponse, 'comment_id')))
+                answerData.comment_ids.push(_.get(commentResponse, 'comment_id'));
+            await answerManager.createOrUpdateAnswer(answerData);
+        }
+        let userInfo = await userManager.getUserDatabyUserId(req.body.user_id);
+        //update comment id in user Data and handle duplicate entries
+        if(!userInfo.comments_added.includes(_.get(commentResponse, 'comment_id')))
+            userInfo.comments_added.push(_.get(commentResponse, 'comment_id'))
+        await userManager.createOrUpdateUser(userInfo);
+        //removing null values
+        commentResponse = _.pickBy(commentResponse, _.identity)
+        res.json(commentResponse);
+    } catch (err) {
+        console.log(err)
+        res.send('Error adding or updating comments')
+    }
+}
+
+async function markRightAnswer(req, res) {
+    try {
+        let questionInfo = await questionManager.getQuestionDataByQuestionId(req.body.question_id);
+        let questionData = _.get(questionInfo, 'description');
+        if (questionData.user_id != req.body.user_id) {
+            res.send("Invalid user trying to update right answer")
+        }
+        _.set(questionData, 'right_answer_ids', req.body.answer_id);
+        let response = await questionManager.createOrUpdateQuestion(questionData);
+        res.json(response)
+    } catch (error) {
+        console.log(error);
+        res.send('Error marking answer');
+    }
+}
+
 module.exports = {
     addOrUpdateQuestion,
     addOrUpdateUser,
     addOrUpdateAnswer,
+    addorUpdateComments,
     getUserDataByUserId,
-    getAllQuestionsByUserId
+    getAllQuestionsByUserId,
+    getAllAnswersByQuestionId,
+    markRightAnswer
 }

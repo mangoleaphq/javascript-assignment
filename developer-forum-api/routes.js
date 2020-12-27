@@ -11,8 +11,11 @@ router.get('/users/:userid', devForumService.getUserDataByUserId);
 
 //answer routes
 router.post('/answers/', devForumService.addOrUpdateAnswer);
+router.post('/answers/mark-right-answer', devForumService.markRightAnswer);
+router.get('/answers/:questionid', devForumService.getAllAnswersByQuestionId);
 
-
+//comment routes
+router.post('/comments/', devForumService.addorUpdateComments);
 
 module.exports = (app) => {
     app.use('/api', router);

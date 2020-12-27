@@ -29,12 +29,23 @@ async function updateAnswer(id, data) {
     }
 }
 
-async function getAnswerDataByAnswerId(questionId) {
+async function getAnswerDataByAnswerId(answerId) {
     try {
         let query = queries.answer.getById;
-        query = _.replace(query, '{uuid}', questionId);
+        query = _.replace(query, '{uuid}', answerId);
         let response = await dbconn.query(query);
         return response.rows[0];
+    } catch (error) {
+        throw error;
+    }
+}
+
+async function getAnswerListByQuestionId(questionId) {
+    try {
+        let query = queries.answer.getByQuestionId;
+        query = _.replace(query, '{uuid}', questionId);
+        let response = await dbconn.query(query);
+        return response.rows;
     } catch (error) {
         throw error;
     }
@@ -43,5 +54,6 @@ async function getAnswerDataByAnswerId(questionId) {
 module.exports = {
     createAnswer,
     updateAnswer,
-    getAnswerDataByAnswerId
+    getAnswerDataByAnswerId,
+    getAnswerListByQuestionId
 }

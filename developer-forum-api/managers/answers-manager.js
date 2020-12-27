@@ -1,5 +1,6 @@
 const answersDataAccessor = require('../data-access/answers-data-accessor'),
     uuid = require('uuid'),
+    templates = require('../common/templates'),
     _ = require('lodash');
 
 async function createOrUpdateAnswer(data) {
@@ -8,6 +9,7 @@ async function createOrUpdateAnswer(data) {
         if (_.isUndefined(data.answer_id)) {
             let answerId = uuid.v4();
             data.answer_id = answerId;
+            data = _.defaults(data, templates.createAnswerPayload);
             response = await answersDataAccessor.createAnswer(answerId, data);
         }
         else
@@ -30,7 +32,20 @@ async function getAnswerDataByAnswerId(answerId) {
     }
 }
 
+async function getAnswerListByQuestionId(questionId) {
+    try {
+        let response;
+        if (!_.isUndefined(questionId)) {
+            response = await answersDataAccessor.getAnswerListByQuestionId(questionId);
+        }
+        return response;
+    } catch (error) {
+        throw error;
+    }
+}
+
 module.exports = {
     createOrUpdateAnswer,
-    getAnswerDataByAnswerId
+    getAnswerDataByAnswerId,
+    getAnswerListByQuestionId
 } 

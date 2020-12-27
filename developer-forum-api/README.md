@@ -15,3 +15,16 @@ npm start
 ```
 
 Your app should now be running on [localhost:4000](http://localhost:4000/).
+
+## Features
+
+- A user will be able to ask a question with title and description
+- Any user will be able to list the unanswered questions
+- Any user(s) will be able to comment on a question
+- Any user(s) will be able to give answer to a question
+- Any user(s) will be able to comment on an answer
+- A user who has raised the question,  will be able to mark the right answer from available list of answers.
+
+## PostMan Collection
+
+- URL : https://documenter.getpostman.com/view/1465737/TVsxBmN7
