@@ -1,7 +1,7 @@
 const express = require('express')
 const router = new express.Router()
 const owner = require('../controllers/owner')
-const auth = require('../middleware/auth')
+const auth = require('../middleware/ownerAuth')
 
 //Owner Signup
 router.post('/owners/signup',owner.owner_signup)
