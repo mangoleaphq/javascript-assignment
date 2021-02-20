@@ -14,7 +14,7 @@ router.post('/owners/logout',auth,owner.owner_logout)
 
 //Display Owner Profile - Testing only
 router.get('/owners/me',auth, async(req,res)=>{
-    res.send(req.user)
+    res.send(req.owner)
 })
 
 module.exports = router
