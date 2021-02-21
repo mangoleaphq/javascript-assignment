@@ -1,41 +1,38 @@
 # Restaurant Finder Web App
 
 A basic Restaurant Finder Web App
+This project is a [Node.js](https://nodejs.org/en/docs/) app using [Express 4](http://expressjs.com/) and [MongoDB]
+
+## Running Locally
+
+Make sure you have [Node.js](http://nodejs.org/) installed.
+For adding documents in DB, make sure DB is running [MongoDB] (& "Path of mongod.exe" --dbpath="Path of mongodb-data")
+
+```sh
+git clone git@github.com:IamRohitRamesh/javascript-assignment.git # or clone your own fork
+cd restaurant-finder-app
+npm install
+npm start
+```
+
+Your app will be running on [localhost:3000](http://localhost:3000/).
 
 ## Basic Features
 
 - Owner should be able to add restaurant with basic information (name, location), cuisines and dishes
 - User must select the city he’s looking to search the restaurant
 - The listing page must display the paginated restaurants
-- On clicking the restaurant, it should navigate to the details page and show all the relevant information
+- On viewing the restaurant, it should display all the relevant information
 
 ## Advanced Features
 
 - Implementing search by restaurant name, dishes
-- Implementing filter by location, cuisine
-- Infinite scroll pagination for the listing page
-- Use Geolocation to automatically set the user location & get the nearby restaurants
+- Implementing filter by location, cuisine.
 
-## Bonus
+## Additional Features
 
-- Unit test with any framework
-- Hosting
+- Both Users and Owners are binded with JWT token which offers authentication, authorization and complete privacy of data
 
-## Tips
+## PostMan Collection
 
-- Usability is more critical than aesthetics
-- Do git commits as you would during a normal workday
-
-## Reference Wireframes
-
-### City Selection
-
-![City Selection](Restaurant-Finder-1.png)
-
-### Restaurants List page
-
-![Restaurants List page](Restaurant-Finder-2.png)
-
-### Restaurant Detail page
-
-![Restaurant Detail page](Restaurant-Finder-3.png)
+- URL : <https://www.getpostman.com/collections/b8c8ff980f5ba61a40f3>

@@ -27,7 +27,7 @@ const restaurantSchema = new mongoose.Schema({
             required:true,
             validate(value){
                 if(value<0){
-                    throw new Error('Quantity must be positive')
+                    throw new Error('Price must be positive')
                 }
             }
         }

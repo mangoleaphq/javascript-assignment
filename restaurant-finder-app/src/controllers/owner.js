@@ -1,5 +1,6 @@
 const Owner = require('../models/owner')
 
+//Owner Signup
 exports.owner_signup = async(req,res)=>{
     const owner = new Owner(req.body)
     const token = await owner.generateAuthToken()
@@ -11,6 +12,7 @@ exports.owner_signup = async(req,res)=>{
     }
 }
 
+//Owner Login
 exports.owner_login = async(req,res)=>{
     try{
         const owner = await Owner.findByCredentials(req.body.email,req.body.password)
@@ -21,6 +23,7 @@ exports.owner_login = async(req,res)=>{
     }
 }
 
+//Owner Logout
 exports.owner_logout = async (req,res)=>{
     try{
         req.owner.tokens = req.owner.tokens.filter((token)=>token.token!=req.token)

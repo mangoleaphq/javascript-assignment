@@ -14,6 +14,7 @@ exports.restaurant_add = async (req,res)=>{
     }
 }
 
+//View restaurants by current Owner
 exports.restaurant_view = async (req,res)=>{
     
     try{
@@ -24,6 +25,7 @@ exports.restaurant_view = async (req,res)=>{
     }
 }
 
+//Restaurant Delete by current owner
 exports.restaurant_delete = async(req,res)=>{
     try{
         const restaurant = await Restaurant.findOneAndDelete({_id:req.params.id,owner:req.owner._id})

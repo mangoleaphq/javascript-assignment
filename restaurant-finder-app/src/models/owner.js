@@ -37,6 +37,17 @@ const ownerSchema = new mongoose.Schema({
     timestamps:true
 })
 
+
+//User-Restaurant relationship
+ownerSchema.virtual('restaurants',{
+    ref:'Restaurant',
+    localField:'_id',
+    foreignField:'owner'
+})
+
+
+//Exclude Private data in response
+
 ownerSchema.methods.toJSON = function(){
     const owner = this
     const ownerObject = owner.toObject()
