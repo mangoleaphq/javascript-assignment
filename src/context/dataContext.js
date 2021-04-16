@@ -8,16 +8,7 @@ const DataContext = createContext({
 });
 
 function DataProvider({ children }) {
-  const [list, setList] = useState([
-    {
-      title: "Learn to fly",
-      isPending: true,
-    },
-    {
-      title: "Learn to fly",
-      isPending: true,
-    },
-  ]);
+  const [list, setList] = useState([]);
   const createItem = async (title) => {
     var newList = [
       ...list,
