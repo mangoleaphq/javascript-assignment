@@ -15,6 +15,11 @@ function TextInput({ createItem }) {
         placeholder="Enter the task"
         value={task}
         onChange={(e) => setTask(e.target.value)}
+        onKeyPress={(event) => {
+          if (event.key === "Enter") {
+            addTodo();
+          }
+        }}
       />
       <button onClick={() => addTodo()}>Add ToDo</button>
     </div>

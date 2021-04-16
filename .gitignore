@@ -1,23 +1,23 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/.pnp
-.pnp.js
+/todo-app/node_modules
+/todo-app/.pnp
+/todo-app/.pnp.js
 
 # testing
-/coverage
+/todo-app/coverage
 
 # production
-/build
+/todo-app/build
 
 # misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+/todo-app/.DS_Store
+/todo-app/.env.local
+/todo-app/.env.development.local
+/todo-app/.env.test.local
+/todo-app/.env.production.local
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+/todo-app/npm-debug.log*
+/todo-app/yarn-debug.log*
+/todo-app/yarn-error.log*
