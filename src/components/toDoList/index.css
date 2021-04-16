@@ -1,0 +1,23 @@
+.main-container {
+  width: 95%;
+  max-width: 600px;
+}
+
+.filter-dropdown-menu {
+  width: 100%;
+  height: 3.2rem;
+  display: flex;
+  background-color: #f2f2f2;
+  margin-bottom: 1.5rem;
+}
+
+.filter-dropdown-menu select {
+  background-color: #f2f2f2;
+  height: 100%;
+  width: 10rem;
+  padding: 1rem;
+  outline: none;
+  border: none;
+  font-weight: 500;
+  font-size: 1rem;
+}
