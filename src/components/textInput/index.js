@@ -1,12 +1,24 @@
+import { useState } from "react";
+import { withData } from "../../context/dataContext";
 import "./index.css";
 
-function TextInput() {
+function TextInput({ createItem }) {
+  const [task, setTask] = useState("");
+  const addTodo = () => {
+    createItem(task);
+    setTask("");
+  };
   return (
     <div className="text-input-container">
-        <input type="text" placeholder="Enter the task"/>
-        <button>Add ToDo</button>
+      <input
+        type="text"
+        placeholder="Enter the task"
+        value={task}
+        onChange={(e) => setTask(e.target.value)}
+      />
+      <button onClick={() => addTodo()}>Add ToDo</button>
     </div>
   );
 }
 
-export default TextInput;
+export default withData(TextInput);

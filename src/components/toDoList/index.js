@@ -1,6 +1,7 @@
 import ToDoItem from "../toDoItem";
+import { withData } from "../../context/dataContext";
 import "./index.css";
-function ToDoList() {
+function ToDoList({ list }) {
   return (
     <div className="main-container">
       <div className="filter-dropdown-menu">
@@ -10,9 +11,13 @@ function ToDoList() {
           <option>Completed</option>
         </select>
       </div>
-      <ToDoItem text="Pay Electricity Bill"/>
+      <>
+        {list.map((item, index) => (
+          <ToDoItem key={index + "list"} item={item} index={index} />
+        ))}
+      </>
     </div>
   );
 }
 
-export default ToDoList;
+export default withData(ToDoList);
