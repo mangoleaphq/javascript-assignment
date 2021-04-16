@@ -1,5 +1,16 @@
 import React, { createContext, useState, useEffect } from "react";
 
+const asyncLocalStorage = {
+  setItem: async function (key, value) {
+    await null;
+    return localStorage.setItem(key, value);
+  },
+  getItem: async function (key) {
+    await null;
+    return localStorage.getItem(key);
+  },
+};
+
 const DataContext = createContext({
   list: [],
   createItem: () => {},
@@ -9,6 +20,18 @@ const DataContext = createContext({
 
 function DataProvider({ children }) {
   const [list, setList] = useState([]);
+
+  useEffect(() => {
+    async function initialLoad() {
+      var localData = await asyncLocalStorage.getItem("todo-list");
+      if (localData) {
+        var initialList = JSON.parse(localData);
+        setList(initialList);
+      }
+    }
+    initialLoad();
+  }, []);
+
   const createItem = async (title) => {
     var newList = [
       ...list,
@@ -17,17 +40,20 @@ function DataProvider({ children }) {
         isPending: true,
       },
     ];
+    await asyncLocalStorage.setItem("todo-list", JSON.stringify(newList));
     setList(newList);
   };
 
   const updateItem = async (index, updatedItem) => {
     var newList = [...list];
     newList[index] = updatedItem;
+    await asyncLocalStorage.setItem("todo-list", JSON.stringify(newList));
     setList(newList);
   };
 
   const deleteItem = async (index) => {
     var newList = list.filter((item, idx) => idx !== index);
+    await asyncLocalStorage.setItem("todo-list", JSON.stringify(newList));
     setList(newList);
   };
 

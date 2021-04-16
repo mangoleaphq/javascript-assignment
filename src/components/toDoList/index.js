@@ -26,6 +26,8 @@ function ToDoList({ list }) {
             (filter === "completed" && !item.isPending)
           ) {
             return <ToDoItem key={index + "list"} item={item} index={index} />;
+          } else {
+            return null;
           }
         })}
       </>
