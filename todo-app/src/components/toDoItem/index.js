@@ -60,10 +60,6 @@ function ToDoItem({ item, index, updateItem, deleteItem }) {
             value={currentText}
             onChange={(e) => setCurrentText(e.target.value)}
             ref={textInput}
-            onBlur={() => {
-              setCurrentText(title);
-              setEditMode(false);
-            }}
           />
           <div className="action-item">
             <MdCheck color="#00D84A" onClick={() => updateText()} />

@@ -1,5 +1,5 @@
 .todo-item-container {
-  width: 100%;
+  max-width: 100%;
   min-height: 3.2rem;
   display: grid;
   grid-template-columns: 0.5fr 5fr 1fr;
