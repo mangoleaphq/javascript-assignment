@@ -1,10 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import ToDoItem from "../toDoItem";
 import { withData } from "../../context/dataContext";
 import "./index.css";
 
 function ToDoList({ list }) {
   const [filter, setFilter] = useState("all");
+
   const changeFilter = (event) => {
     setFilter(event.target.value);
   };

@@ -1,13 +1,15 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { withData } from "../../context/dataContext";
 import "./index.css";
 
 function TextInput({ createItem }) {
   const [task, setTask] = useState("");
+
   const addTodo = () => {
     createItem(task);
     setTask("");
   };
+
   return (
     <div className="text-input-container">
       <input
