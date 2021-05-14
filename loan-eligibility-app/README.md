@@ -8,13 +8,13 @@ Preferred stack - Typescript, ReactJs, NodeJs with any framework
 
 - Backend API application to receive the data and provide appropriate response to the client application
 
-- Create a user interface to collect/modify rules from bank admin user
+- Create a user interface to collect/modify conditions from bank admin user
 
 - Create a user interface to accept required validation inputs from a public user. Upon clicking the "Check Eligibility" button, push this to backend api service and return the eligibility criteria 
 
 
-## Sample Rules and Eligibility Criteria: 
-*Rule 1: A person is eligible for a car loan?*
+## Sample conditions and eligibility Criteria: 
+*Conditions 1: A person is eligible for a car loan?*
 
 _if:_
    1. He has a monthly salary of more than 70K.
@@ -26,7 +26,7 @@ _then_
    2. Sanctioned 60% of the requested car loan amount.
 
 
-*Rule 2: A person is eligible for a car loan?*
+*Conditions 2: A person is eligible for a car loan?*
 
 _if:_
    1. He has a monthly salary of more than 35K.
