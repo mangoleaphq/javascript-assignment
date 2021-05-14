@@ -1,6 +1,4 @@
-# Javascript assignment
-
-Javascript coding evaluation assignment
+# Coding assignments
 
 - [HackerNews App](hackernews-app/README.md)
 - [TODO App](todo-app/README.md)
