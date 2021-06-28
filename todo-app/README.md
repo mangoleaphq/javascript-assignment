@@ -16,7 +16,7 @@ A basic local TODO web app
 
 ## Bonus
 
-- Persist these TODO Items in Airtable through their [REST API](https://airtable.com/api)
+- Persist these TODO Items in Notion through their [REST API](https://developers.notion.com/docs/getting-started)
 
 ## Tips
 
