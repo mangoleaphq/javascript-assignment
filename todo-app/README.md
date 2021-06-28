@@ -16,7 +16,7 @@ A basic local TODO web app
 
 ## Bonus
 
-- Unit test with any framework
+- Persist these TODO Items in Airtable through their [REST API](https://airtable.com/api)
 
 ## Tips
 
